@@ -1,0 +1,35 @@
+# Databricks App Configuration
+# This file defines how your Streamlit app will be deployed as a Databricks App
+
+# Workspace configuration - update with your workspace details
+workspace:
+  host: https://your-workspace.cloud.databricks.com
+  # Authentication will use the profile from .databrickscfg or environment variables
+
+# App configuration
+resources:
+  apps:
+    streamlit-template:
+      name: streamlit-template
+      description: "Streamlit visualization template for Databricks Apps"
+
+      # App resources - adjust based on your needs
+      resources:
+        - name: "streamlit-app"
+          description: "Main Streamlit application"
+          source_code_path: ./
+
+      # Compute configuration
+      compute:
+        - name: "streamlit-compute"
+          spec:
+            # Choose an appropriate instance type
+            # Options: 2X-Small, X-Small, Small, Medium, Large, X-Large, 2X-Large
+            size: "Small"
+
+      # Optional: Environment variables
+      # env:
+      #   - name: DATABRICKS_SERVER_HOSTNAME
+      #     value: "your-server-hostname"
+      #   - name: DATABRICKS_HTTP_PATH
+      #     value: "/sql/1.0/warehouses/xxxxx"
